@@ -152,6 +152,8 @@ func GetRootCmd(args []string) *cobra.Command {
 		serverArgs.ExcludedResourceKinds, "Comma-separated list of resource kinds that should not generate source events")
 	rootCmd.PersistentFlags().StringVar(&serverArgs.MCPSourceServerAddress, "mcpSourceServerAddress",
 		serverArgs.MCPSourceServerAddress, "MCP Source server address")
+	rootCmd.PersistentFlags().StringVar(&serverArgs.MCPSourceNodeID, "mcpSourceNodeID",
+		serverArgs.MCPSourceNodeID, "MCP Source node ID")
 
 	serverArgs.IntrospectionOptions.AttachCobraFlags(rootCmd)
 

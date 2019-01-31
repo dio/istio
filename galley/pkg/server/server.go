@@ -120,7 +120,7 @@ func newServer(a *Args, p patchTable) (*Server, error) {
 			return nil, err
 		}
 	} else if a.MCPSourceServerAddress != "" {
-		src, err = p.mcpSourceNew(context.Background(), a.MCPSourceServerAddress, "default")
+		src, err = p.mcpSourceNew(context.Background(), a.MCPSourceServerAddress, a.MCPSourceNodeID)
 		if err != nil {
 			return nil, err
 		}

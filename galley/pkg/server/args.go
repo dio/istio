@@ -86,6 +86,9 @@ type Args struct {
 
 	// MCPSourceServerAddress is the MCP Source Server address.
 	MCPSourceServerAddress string
+
+	// MCPSourceNodeID is the MCP Source node ID.
+	MCPSourceNodeID string
 }
 
 // DefaultArgs allocates an Args struct initialized with Mixer's default configuration.
@@ -105,6 +108,7 @@ func DefaultArgs() *Args {
 		DisableResourceReadyCheck: false,
 		ExcludedResourceKinds:     defaultExcludedResourceKinds(),
 		MCPSourceServerAddress:    "",
+		MCPSourceNodeID:           "default",
 	}
 }
 

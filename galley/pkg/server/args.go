@@ -83,6 +83,9 @@ type Args struct {
 	// allows Galley to start when not all supported CRD are
 	// registered with the kube-apiserver.
 	DisableResourceReadyCheck bool
+
+	// MCPSourceServerAddress is the MCP Source Server address.
+	MCPSourceServerAddress string
 }
 
 // DefaultArgs allocates an Args struct initialized with Mixer's default configuration.
@@ -134,6 +137,7 @@ func (a *Args) String() string {
 	_, _ = fmt.Fprintf(buf, "DomainSuffix: %s\n", a.DomainSuffix)
 	_, _ = fmt.Fprintf(buf, "DisableResourceReadyCheck: %v\n", a.DisableResourceReadyCheck)
 	_, _ = fmt.Fprintf(buf, "ExcludedResourceKinds: %v\n", a.ExcludedResourceKinds)
+	_, _ = fmt.Fprintf(buf, "MCPSourceServerAddress: %s\n", a.MCPSourceServerAddress)
 
 	return buf.String()
 }

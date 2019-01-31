@@ -290,6 +290,14 @@ type Updater interface {
 	Apply(*Change) error
 }
 
+// UpdaterFunc implements Updater for anonymous functions
+type UpdaterFunc func(*Change) error
+
+// Apply ...
+func (f UpdaterFunc) Apply(c *Change) error {
+	return f(c)
+}
+
 // InMemoryUpdater is an implementation of Updater that keeps a simple in-memory state.
 type InMemoryUpdater struct {
 	items      map[string][]*Object

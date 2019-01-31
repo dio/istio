@@ -66,6 +66,7 @@ func New(ctx context.Context, mcpAddress, nodeID string) (runtime.Source, error)
 			}
 			return mcpapi.NewAggregatedMeshConfigServiceClient(conn), nil
 		},
+		localCache: make(map[string]cacheEntry),
 	}, nil
 }
 

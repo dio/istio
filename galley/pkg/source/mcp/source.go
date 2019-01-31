@@ -16,6 +16,7 @@ import (
 	"istio.io/istio/pilot/pkg/bootstrap"
 	"istio.io/istio/pkg/log"
 	"istio.io/istio/pkg/mcp/client"
+	"istio.io/istio/pkg/mcp/monitoring"
 	"istio.io/istio/pkg/mcp/sink"
 )
 
@@ -99,10 +100,6 @@ func (s *source) Apply(c *sink.Change) error {
 			continue
 		}
 
-		if err != nil {
-
-		}
-
 		if errs == nil {
 			lc, ok := s.localCache[o.TypeURL][o.Metadata.Name]
 			if ok {
@@ -173,7 +170,14 @@ func (s *source) Start(handler resource.EventHandler) error {
 		return err
 	}
 
-	options := &sink.Options{}
+	options := &sink.Options{
+		CollectionOptions: sink.CollectionOptionsFromSlice(metadata.Types.Collections()),
+		Updater:           s,
+		ID:                s.nodeID,
+		Metadata:          map[string]string{},
+		Reporter:          monitoring.NewStatsContext("galley-mcp-client"),
+	}
+
 	mcpClient := client.New(cl, options)
 
 	go mcpClient.Run(ctx)

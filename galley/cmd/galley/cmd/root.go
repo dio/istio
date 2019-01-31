@@ -150,6 +150,8 @@ func GetRootCmd(args []string) *cobra.Command {
 		"Disable resource readiness checks. This allows Galley to start if not all resource types are supported")
 	rootCmd.PersistentFlags().StringSliceVar(&serverArgs.ExcludedResourceKinds, "excludedResourceKinds",
 		serverArgs.ExcludedResourceKinds, "Comma-separated list of resource kinds that should not generate source events")
+	rootCmd.PersistentFlags().StringVar(&serverArgs.MCPSourceServerAddress, "mcpSourceServerAddress",
+		serverArgs.MCPSourceServerAddress, "MCP Source server address")
 
 	serverArgs.IntrospectionOptions.AttachCobraFlags(rootCmd)
 

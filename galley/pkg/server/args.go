@@ -104,6 +104,7 @@ func DefaultArgs() *Args {
 		DomainSuffix:              defaultDomainSuffix,
 		DisableResourceReadyCheck: false,
 		ExcludedResourceKinds:     defaultExcludedResourceKinds(),
+		MCPSourceServerAddress:    "",
 	}
 }
 
